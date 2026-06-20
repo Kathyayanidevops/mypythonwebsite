@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Tickets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">🎬 MovieTickets</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/movies">Movies</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Book Your Movie Tickets</h1>
+            <p>Easy booking, best experience</p>
+            <a href="/movies" class="btn">Browse Movies</a>
+        </div>
+
+        <h2 class="section-title">Featured Movies</h2>
+        <div class="movie-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <div class="movie-icon">{{ movie.image }}</div>
+                <h3>{{ movie.title }}</h3>
+                <p class="genre">{{ movie.genre }}</p>
+                <p class="rating">⭐ {{ movie.rating }}</p>
+                <a href="/book/{{ movie.id }}" class="btn btn-small">Book Now</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 MovieTickets</p>
+    </footer>
+</body>
+</html>
